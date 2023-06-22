@@ -1,0 +1,43 @@
+.draggable-window {
+  user-select: none;
+  position: absolute;
+  width: 850px;
+  height: 650px;
+  border: 1px solid #23234E;
+  background: #23234E;
+  border-radius: 25px;
+}
+
+.window-content {
+  padding: 10px;
+}
+
+.file {
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 185px;
+  width: 655px;
+  height: 68%;
+  padding-left: 5px;
+  border-radius: 0 0 25px 0;
+  background: #23234E;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.file::-webkit-scrollbar {
+  width: 7px;
+  background-color: #23234E;
+}
+
+.file::-webkit-scrollbar-thumb {
+  background-color: #864099FF;
+  border-radius: 5px;
+}
+
+
+
+
+
+

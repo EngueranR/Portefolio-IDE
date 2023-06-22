@@ -1,0 +1,14 @@
+<div class="console">
+  <div class="log">
+    <div *ngFor="let log of logs">
+      <div>{{log}}</div>
+    </div>
+    <div class="command-line">
+      <span> engueran@portefolio app % </span>
+      <div class="input-container">
+        <input [(ngModel)]="currentCommand" (keydown.enter)="executeCommand()" type="text" maxlength="25" />
+        <span class="cursor" [style.visibility]="currentCommand.length > 0 ? 'hidden' : 'visible'">▯</span>
+      </div>
+    </div>
+  </div>
+</div>

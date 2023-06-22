@@ -1,0 +1,41 @@
+{
+  "title": "Compétences",
+  "skill": [
+    {
+      "language": "Java",
+      "sourceIcon": "assets/images/java.svg"
+    },
+    {
+      "language": "HTML",
+      "sourceIcon": "assets/images/html.svg"
+    },
+    {
+      "language": "CSS",
+      "sourceIcon": "assets/images/css.svg"
+    },
+    {
+      "language": "JavaScript",
+      "sourceIcon": "assets/images/javascript.svg"
+    },
+    {
+      "language": "PHP",
+      "sourceIcon": "assets/images/php.svg"
+    },
+    {
+      "language": "SQL",
+      "sourceIcon": "assets/images/sql.svg"
+    },
+    {
+      "language": "C",
+      "sourceIcon": "assets/images/c.svg"
+    },
+    {
+      "language": "C#",
+      "sourceIcon": "assets/images/csharp.svg"
+    },
+    {
+      "language": "Angular",
+      "sourceIcon": "assets/images/angular.svg"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<pre><code>
+  <span class="bracket">&lbrace;</span>
+  <span class="class">"title"</span>: <span class="string">"{{jsonSkills.title}}"</span>,
+  <span class="class">"skill"</span>: [
+    <span *ngFor="let skill of jsonSkills.skill; let i = index">
+      <span class="bracket">&lbrace;</span>
+      <span class="class">"year"</span>: <span class="string">"{{skill.language}}"</span>,
+      <span class="class">"role"</span>: <span class="string">"{{skill.sourceIcon}}"</span>
+      },
+    </span>]
+  <span class="bracket">}</span>
+</code></pre>

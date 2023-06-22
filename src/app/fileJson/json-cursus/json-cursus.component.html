@@ -1,0 +1,19 @@
+<pre><code>
+  <span class="bracket">&lbrace;</span>
+  <span class="class">"title"</span>: <span class="string">"{{jsonCursus.title}}"</span>,
+  <span class="class">"cursus"</span>: [
+    <span *ngFor="let cursus of jsonCursus.cursus; let i = index">
+      <span class="bracket">&lbrace;</span>
+      <span class="class">"year"</span>: <span class="string">"{{cursus.year}}"</span>,
+      <span class="class">"role"</span>: <span class="string">"{{cursus.institution}}"</span>,
+
+      <span class="class">"description"</span>:
+        <span *ngIf="Array.isArray(cursus.description)">    [
+            <span *ngFor="let description of cursus.description; let j = index">
+              <span class="bracket">"</span><span class="string">{{description}}</span><span class="bracket">"</span><span *ngIf="j !== cursus.description.length - 1">,</span>
+            </span>]
+        </span>
+      <span class="bracket">}</span><span *ngIf="i !== jsonCursus.cursus.length - 1">,</span>
+    </span>]
+  <span class="bracket">}</span>
+</code></pre>

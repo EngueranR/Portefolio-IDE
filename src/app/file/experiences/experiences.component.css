@@ -1,0 +1,62 @@
+code {
+  margin:0;
+  font-size: 1em;
+  text-decoration: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #ffffff;
+}
+
+
+.classMargin{
+  margin-left: -10px;
+}
+
+.code {
+  color: #ffffff;
+}
+
+.class {
+  color: #eec067;
+}
+
+.class-name {
+  color: #f78c6c;
+}
+
+.bracket {
+  color: #d4d4d4;
+}
+
+.type {
+  color: #b788d8;
+}
+
+.variable {
+  color: #ffffff;
+}
+
+
+.variablethis{
+  color: #e48468;
+}
+
+.comment {
+  color: #b8da87;
+}
+
+.function {
+  color: #7396df;
+}
+
+.string {
+  color: #b8da87;
+}
+
+.return {
+  color: #569cd6;
+}
+
+.punctuation {
+  color: #ffffff;
+}

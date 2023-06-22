@@ -1,0 +1,48 @@
+.container-nav-folder-left{
+  margin-top:40px;
+  position:absolute;
+  width: 185px;
+  height: 70%;
+  background: #2A2A41;
+  border-left: #23234E solid 1px;
+  overflow-y:auto;
+}
+
+
+.container-folder {
+  padding-left: 10px;
+  background: #2A2A41;
+  display: flex;
+  align-items: center;
+  gap:10px;
+  height: 30px;
+  width: 175px;
+}
+
+
+.active{
+  background: #32334C;
+}
+
+.txtFile {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.7em;
+  color:#939BC3;
+  user-select: none;
+  text-decoration: none;
+  white-space: pre-wrap;
+}
+
+.tab1{
+  width: 165px !important;
+  padding-left: 20px !important;
+}
+
+
+.tab3{
+  padding-left: 45px !important;
+  width: 140px !important;
+}
+
+
+

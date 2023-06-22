@@ -1,0 +1,21 @@
+<div #myWindow id="myWindow" class="draggable-window"
+     (mousedown)="onMouseDown($event)"
+     (mouseup)="onMouseUp()"
+     (mousemove)="onMouseMove($event)">
+  <app-nav-window></app-nav-window>
+  <app-nav-file-left></app-nav-file-left>
+  <div class="file">
+    <app-experiences *ngIf="oExperiences"></app-experiences>
+    <app-cursus *ngIf="oCursus"></app-cursus>
+    <app-skills *ngIf="oSkills"></app-skills>
+    <app-contact *ngIf="oContact"></app-contact>
+    <app-main *ngIf="oMain"></app-main>
+
+    <app-json-experience *ngIf="oJExperiences"></app-json-experience>
+    <app-json-cursus *ngIf="oJCursus" ></app-json-cursus>
+    <app-json-skill *ngIf="oJSkills" ></app-json-skill>
+    <app-json-contact *ngIf="oJContact"></app-json-contact>
+  </div>
+
+  <app-console></app-console>
+</div>

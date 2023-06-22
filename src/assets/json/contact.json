@@ -1,0 +1,35 @@
+{
+  "title": "Contact",
+  "contact": [
+    {
+      "type": "Email",
+      "value": "rt.engueran@gmail.com",
+      "sourceIcon": "assets/images/email.svg"
+    },
+    {
+      "type": "Téléphone",
+      "value": "06 . 75 . 31 . 64 . 10",
+      "sourceIcon": "assets/images/phone.svg"
+    },
+    {
+      "type": "Localisation",
+      "value": "6 Place de l’hôpital Général Valenciennes (59300)",
+      "sourceIcon": "assets/images/location.svg"
+    },
+    {
+      "type": "Permis de conduire",
+      "value": "Permis Voiture (B2), Véhiculé",
+      "sourceIcon": "assets/images/car.svg"
+    },
+    {
+      "type": "Réseaux sociaux",
+      "value": "LinkedIn, GitHub",
+      "sourceIcon": "assets/images/social.svg"
+    },
+    {
+      "type": "Langues",
+      "value": "Français (natif), Anglais (intermédiaire)",
+      "sourceIcon": "assets/images/language.svg"
+    }
+  ]
+}

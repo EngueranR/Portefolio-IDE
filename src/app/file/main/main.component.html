@@ -1,0 +1,305 @@
+<pre>
+    <code>
+      <span class="type">import</span> <span class="class-name">com.fasterxml.jackson.databind.JsonNode</span><span
+      class="punctuation">;</span><br>
+      <span class="type">import</span> <span
+      class="class-name">com.fasterxml.jackson.databind.ObjectMapper</span><span class="punctuation">;</span><br>
+      <span class="type">import</span> <span class="class-name">java.io.IOException</span><span
+      class="punctuation">;</span><br>
+      <span class="type">import</span> <span class="class-name">java.nio.file.Paths</span><span
+      class="punctuation">;</span><br>
+      <span class="type">import</span> <span class="class-name">java.util.ArrayList</span><span
+      class="punctuation">;</span><br>
+      <span class="type">import</span> <span class="class-name">java.util.List</span><span
+      class="punctuation">;</span><br>
+
+      <span class="type">public</span> <span class="type">class</span> <span class="class-name">Main</span> <span
+      class="punctuation">&lbrace;</span><br>
+      <span class="indent1"><span class="type">public static void</span> <span class="class-name">main</span><span
+          class="punctuation">(</span><span class="type">String[]</span> <span class="variable">args</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent2"><span class="type">ObjectMapper</span> <span class="variable">mapper</span> <span
+          class="operator">=</span> <span class="type">new</span> <span class="type">ObjectMapper</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent2"><span class="type">List</span><span class="punctuation">&lt;</span><span
+          class="class-name">Experiences</span><span class="punctuation">&gt;</span> <span
+          class="variable">experiences</span> <span class="operator">=</span> <span class="type">new</span> <span
+          class="type">ArrayList</span><span class="punctuation">&lt;&gt;();</span></span><br>
+      <span class="indent2"><span class="type">List</span><span class="punctuation">&lt;</span><span
+          class="class-name">Cursus</span><span class="punctuation">&gt;</span> <span class="variable">cursusList</span> <span
+          class="operator">=</span> <span class="type">new</span> <span class="type">ArrayList</span><span
+          class="punctuation">&lt;&gt;();</span></span><br>
+      <span class="indent2"><span class="type">List</span><span class="punctuation">&lt;</span><span
+          class="class-name">Skills</span><span class="punctuation">&gt;</span> <span class="variable">skillsList</span> <span
+          class="operator">=</span> <span class="type">new</span> <span class="type">ArrayList</span><span
+          class="punctuation">&lt;&gt;();</span></span><br>
+      <span class="indent2"><span class="type">List</span><span class="punctuation">&lt;</span><span
+          class="class-name">Contact</span><span class="punctuation">&gt;</span> <span
+          class="variable">contactList</span> <span class="operator">=</span> <span class="type">new</span> <span
+          class="type">ArrayList</span><span class="punctuation">&lt;&gt;();</span></span><br>
+
+      <span class="indent2"><span class="type">try</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent3"><span class="comment">// Lire le fichier JSON</span></span><br>
+      <span class="indent3"><span class="type">JsonNode</span> <span class="variable">rootNode</span> <span
+          class="operator">=</span> <span class="variable">mapper</span><span class="punctuation">.</span><span
+          class="function">readTree</span><span class="punctuation">(</span><span class="type">Paths</span><span
+          class="punctuation">.</span><span class="function">get</span><span class="punctuation">(</span><span
+          class="string">"src/assets/json/experiences.json"</span><span class="punctuation">)</span><span
+          class="punctuation">.</span><span class="function">toFile</span><span class="punctuation">()</span><span
+          class="punctuation">);</span></span><br>
+      <span class="indent3"><span
+          class="comment">// Parcourir le tableau "experience" et créer les objets Experiences</span></span><br>
+      <span class="indent3"><span class="type">if</span> <span class="punctuation">(</span><span class="variable">rootNode</span><span
+          class="punctuation">.</span><span class="function">has</span><span class="punctuation">(</span><span
+          class="string">"experience"</span><span class="punctuation">)</span><span class="punctuation">)</span> <span
+          class="punctuation">&lbrace;</span></span><br>
+      <span class="indent4"><span class="type">JsonNode</span> <span class="variable">experienceNode</span> <span
+          class="operator">=</span> <span class="variable">rootNode</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"experience"</span><span
+          class="punctuation">)</span><span class="punctuation">;</span></span><br>
+      <span class="indent4"><span class="type">for</span> <span class="punctuation">(</span><span class="type">JsonNode</span> <span
+          class="variable">node</span> <span class="operator">:</span> <span class="variable">experienceNode</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">year</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"year"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">role</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"role"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">company</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"company"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">description</span><span
+          class="punctuation">;</span></span><br>
+
+      <span class="indent5"><span class="type">if</span> <span class="punctuation">(</span><span
+          class="variable">node</span><span class="punctuation">.</span><span class="function">get</span><span
+          class="punctuation">(</span><span class="string">"description"</span><span class="punctuation">)</span><span
+          class="punctuation">.</span><span class="function">isArray</span><span class="punctuation">()</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent6"><span class="type">List</span><span class="punctuation">&lt;</span><span class="type">String</span><span
+          class="punctuation">&gt;</span> <span class="variable">descriptions</span> <span
+          class="operator">=</span> <span class="type">new</span> <span class="type">ArrayList</span><span
+          class="punctuation">&lt;&gt;();</span></span><br>
+      <span class="indent6"><span class="type">for</span> <span class="punctuation">(</span><span class="type">JsonNode</span> <span
+          class="variable">descNode</span> <span class="operator">:</span> <span class="variable">node</span><span
+          class="punctuation">.</span><span class="function">get</span><span class="punctuation">(</span><span
+          class="string">"description"</span><span class="punctuation">)</span><span class="punctuation">)</span> <span
+          class="punctuation">&lbrace;</span></span><br>
+      <span class="indent7"><span class="variable">descriptions</span><span class="punctuation">.</span><span
+          class="function">add</span><span class="punctuation">(</span><span class="variable">descNode</span><span
+          class="punctuation">.</span><span class="function">asText</span><span class="punctuation">()</span><span
+          class="punctuation">);</span></span><br>
+      <span class="indent6"><span class="punctuation">}</span></span><br>
+      <span class="indent6"><span class="variable">description</span> <span class="operator">=</span> <span
+          class="type">String</span><span class="punctuation">.</span><span class="function">join</span><span
+          class="punctuation">(</span><span class="string">", "</span><span class="punctuation">,</span> <span
+          class="variable">descriptions</span><span class="punctuation">);</span></span><br>
+      <span class="indent5"><span class="punctuation">}</span> <span class="type">else</span> <span
+          class="punctuation">&lbrace;</span></span><br>
+      <span class="indent6"><span class="variable">description</span> <span class="operator">=</span> <span
+          class="variable">node</span><span class="punctuation">.</span><span class="function">get</span><span
+          class="punctuation">(</span><span class="string">"description"</span><span class="punctuation">)</span><span
+          class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="punctuation">}</span></span><br>
+
+      <span class="indent5"><span class="comment">// Créer un nouvel objet Experiences et l'ajouter à la liste</span></span><br>
+      <span class="indent5"><span class="variable">experiences</span><span class="punctuation">.</span><span
+          class="function">add</span><span class="punctuation">(</span><span class="type">new</span> <span
+          class="class-name">Experiences</span><span class="punctuation">(</span><span class="variable">year</span><span
+          class="punctuation">,</span> <span class="variable">role</span><span class="punctuation">,</span> <span
+          class="variable">company</span><span class="punctuation">,</span> <span
+          class="variable">description</span><span class="punctuation">)</span><span
+          class="punctuation">);</span></span><br>
+      <span class="indent4"><span class="punctuation">}</span></span><br>
+      <span class="indent3"><span class="punctuation">}</span></span><br>
+
+      <span class="indent3"><span class="comment">// Lire le deuxième fichier JSON</span></span><br>
+      <span class="indent3"><span class="variable">rootNode</span> <span class="operator">=</span> <span
+          class="variable">mapper</span><span class="punctuation">.</span><span class="function">readTree</span><span
+          class="punctuation">(</span><span class="type">Paths</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"src/assets/json/cursus.json"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">toFile</span><span
+          class="punctuation">()</span><span class="punctuation">);</span></span><br>
+
+      <span class="indent3"><span
+          class="comment">// Parcourir le tableau "education" et créer les objets Cursus</span></span><br>
+      <span class="indent3"><span class="type">if</span> <span class="punctuation">(</span><span class="variable">rootNode</span><span
+          class="punctuation">.</span><span class="function">has</span><span class="punctuation">(</span><span
+          class="string">"education"</span><span class="punctuation">)</span><span class="punctuation">)</span> <span
+          class="punctuation">&lbrace;</span></span><br>
+      <span class="indent4"><span class="type">JsonNode</span> <span class="variable">educationNode</span> <span
+          class="operator">=</span> <span class="variable">rootNode</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"education"</span><span
+          class="punctuation">)</span><span class="punctuation">;</span></span><br>
+      <span class="indent4"><span class="type">for</span> <span class="punctuation">(</span><span class="type">JsonNode</span> <span
+          class="variable">node</span> <span class="operator">:</span> <span class="variable">educationNode</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">year</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"year"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">description</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"description"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">institution</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"institution"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+
+      <span class="indent5"><span
+          class="comment">// Créer un nouvel objet Cursus et l'ajouter à la liste</span></span><br>
+      <span class="indent5"><span class="variable">cursusList</span><span class="punctuation">.</span><span
+          class="function">add</span><span class="punctuation">(</span><span class="type">new</span> <span
+          class="class-name">Cursus</span><span class="punctuation">(</span><span class="variable">year</span><span
+          class="punctuation">,</span> <span class="variable">description</span><span class="punctuation">,</span> <span
+          class="variable">institution</span><span class="punctuation">)</span><span
+          class="punctuation">);</span></span><br>
+      <span class="indent4"><span class="punctuation">}</span></span><br>
+      <span class="indent3"><span class="punctuation">}</span></span><br>
+
+      <span class="indent3"><span class="comment">// Lire le troisième fichier JSON</span></span><br>
+      <span class="indent3"><span class="variable">rootNode</span> <span class="operator">=</span> <span
+          class="variable">mapper</span><span class="punctuation">.</span><span class="function">readTree</span><span
+          class="punctuation">(</span><span class="type">Paths</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"src/assets/json/skills.json"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">toFile</span><span
+          class="punctuation">()</span><span class="punctuation">);</span></span><br>
+
+      <span class="indent3"><span
+          class="comment">// Parcourir le tableau "skill" et créer les objets Skills</span></span><br>
+      <span class="indent3"><span class="type">if</span> <span class="punctuation">(</span><span class="variable">rootNode</span><span
+          class="punctuation">.</span><span class="function">has</span><span class="punctuation">(</span><span
+          class="string">"skill"</span><span class="punctuation">)</span><span class="punctuation">)</span> <span
+          class="punctuation">&lbrace;</span></span><br>
+      <span class="indent4"><span class="type">JsonNode</span> <span class="variable">skillNode</span> <span
+          class="operator">=</span> <span class="variable">rootNode</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"skill"</span><span
+          class="punctuation">)</span><span class="punctuation">;</span></span><br>
+      <span class="indent4"><span class="type">for</span> <span class="punctuation">(</span><span class="type">JsonNode</span> <span
+          class="variable">node</span> <span class="operator">:</span> <span class="variable">skillNode</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">language</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"language"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">sourceIcon</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"sourceIcon"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+
+      <span class="indent5"><span
+          class="comment">// Créer un nouvel objet Skills et l'ajouter à la liste</span></span><br>
+      <span class="indent5"><span class="variable">skillsList</span><span class="punctuation">.</span><span
+          class="function">add</span><span class="punctuation">(</span><span class="type">new</span> <span
+          class="class-name">Skills</span><span class="punctuation">(</span><span class="variable">language</span><span
+          class="punctuation">,</span> <span class="variable">sourceIcon</span><span class="punctuation">)</span><span
+          class="punctuation">);</span></span><br>
+      <span class="indent4"><span class="punctuation">}</span></span><br>
+      <span class="indent3"><span class="punctuation">}</span></span><br>
+
+      <span class="indent3"><span class="comment">// Lire le quatrième fichier JSON</span></span><br>
+      <span class="indent3"><span class="variable">rootNode</span> <span class="operator">=</span> <span
+          class="variable">mapper</span><span class="punctuation">.</span><span class="function">readTree</span><span
+          class="punctuation">(</span><span class="type">Paths</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"src/assets/json/contact.json"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">toFile</span><span
+          class="punctuation">()</span><span class="punctuation">);</span></span><br>
+
+      <span class="indent3"><span class="comment">// Parcourir le tableau "details" et créer les objets Contact</span></span><br>
+      <span class="indent3"><span class="type">if</span> <span class="punctuation">(</span><span class="variable">rootNode</span><span
+          class="punctuation">.</span><span class="function">has</span><span class="punctuation">(</span><span
+          class="string">"details"</span><span class="punctuation">)</span><span class="punctuation">)</span> <span
+          class="punctuation">&lbrace;</span></span><br>
+      <span class="indent4"><span class="type">JsonNode</span> <span class="variable">detailsNode</span> <span
+          class="operator">=</span> <span class="variable">rootNode</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"details"</span><span
+          class="punctuation">)</span><span class="punctuation">;</span></span><br>
+      <span class="indent4"><span class="type">for</span> <span class="punctuation">(</span><span class="type">JsonNode</span> <span
+          class="variable">node</span> <span class="operator">:</span> <span class="variable">detailsNode</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">type</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"type"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">value</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"value"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent5"><span class="type">String</span> <span class="variable">sourceIcon</span> <span
+          class="operator">=</span> <span class="variable">node</span><span class="punctuation">.</span><span
+          class="function">get</span><span class="punctuation">(</span><span class="string">"sourceIcon"</span><span
+          class="punctuation">)</span><span class="punctuation">.</span><span class="function">asText</span><span
+          class="punctuation">();</span></span><br>
+
+      <span class="indent5"><span
+          class="comment">// Créer un nouvel objet Contact et l'ajouter à la liste</span></span><br>
+      <span class="indent5"><span class="variable">contactList</span><span class="punctuation">.</span><span
+          class="function">add</span><span class="punctuation">(</span><span class="type">new</span> <span
+          class="class-name">Contact</span><span class="punctuation">(</span><span class="variable">type</span><span
+          class="punctuation">,</span> <span class="variable">value</span><span class="punctuation">,</span> <span
+          class="variable">sourceIcon</span><span class="punctuation">)</span><span class="punctuation">);</span></span><br>
+      <span class="indent4"><span class="punctuation">}</span></span><br>
+      <span class="indent3"><span class="punctuation">}</span></span><br>
+
+      <span class="indent3"><span class="comment">// Afficher les objets Experiences</span></span><br>
+      <span class="indent3"><span class="kwd">for</span> <span class="punctuation">(</span><span class="class-name">Experiences</span> <span
+          class="variable">e</span> <span class="kwd">:</span> <span class="variable">experiences</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent4"><span class="kwd">System</span><span class="punctuation">.</span><span class="function">out</span><span
+          class="punctuation">.</span><span class="function">println</span><span class="punctuation">(</span><span
+          class="variable">e</span><span class="punctuation">);</span></span><br>
+      <span class="indent3"><span class="punctuation">}</span></span><br>
+
+      <span class="indent3"><span class="comment">// Afficher les objets Cursus</span></span><br>
+      <span class="indent3"><span class="kwd">for</span> <span class="punctuation">(</span><span class="class-name">Cursus</span> <span
+          class="variable">c</span> <span class="kwd">:</span> <span class="variable">cursusList</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent4"><span class="kwd">System</span><span class="punctuation">.</span><span class="function">out</span><span
+          class="punctuation">.</span><span class="function">println</span><span class="punctuation">(</span><span
+          class="variable">c</span><span class="punctuation">);</span></span><br>
+      <span class="indent3"><span class="punctuation">}</span></span><br>
+
+      <span class="indent3"><span class="comment">// Afficher les objets Skills</span></span><br>
+      <span class="indent3"><span class="kwd">for</span> <span class="punctuation">(</span><span class="class-name">Skills</span> <span
+          class="variable">s</span> <span class="kwd">:</span> <span class="variable">skillsList</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent4"><span class="kwd">System</span><span class="punctuation">.</span><span class="function">out</span><span
+          class="punctuation">.</span><span class="function">println</span><span class="punctuation">(</span><span
+          class="variable">s</span><span class="punctuation">);</span></span><br>
+      <span class="indent3"><span class="punctuation">}</span></span><br>
+
+      <span class="indent3"><span class="comment">// Afficher les objets Contact</span></span><br>
+      <span class="indent3"><span class="kwd">for</span> <span class="punctuation">(</span><span class="class-name">Contact</span> <span
+          class="variable">c</span> <span class="kwd">:</span> <span class="variable">contactList</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent4"><span class="kwd">System</span><span class="punctuation">.</span><span class="function">out</span><span
+          class="punctuation">.</span><span class="function">println</span><span class="punctuation">(</span><span
+          class="variable">c</span><span class="punctuation">);</span></span><br>
+      <span class="indent3"><span class="punctuation">}</span></span><br>
+
+      <span class="indent2"><span class="punctuation">}</span> <span class="kwd">catch</span> <span
+          class="punctuation">(</span><span class="type">IOException</span> <span class="variable">e</span><span
+          class="punctuation">)</span> <span class="punctuation">&lbrace;</span></span><br>
+      <span class="indent3"><span class="variable">e</span><span class="punctuation">.</span><span class="function">printStackTrace</span><span
+          class="punctuation">();</span></span><br>
+      <span class="indent2"><span class="punctuation">}</span></span><br>
+    <span class="punctuation">}</span>
+<span class="punctuation">}</span>
+    </code>
+</pre>
